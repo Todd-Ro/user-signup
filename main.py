@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -118,14 +118,16 @@ def validate_signup():
     if not password_error and not username_error and not re_password_error and not email_error:
         return "Welcome, " + str(username)
     else: 
-        return signup_form.format(username_error=username_error, 
+        return render_template("userform.html", 
+            username_error=username_error, 
             password_error=password_error,
             re_password_error=re_password_error,
             email_error=email_error,
             username=username,
             password='',
             re_password='',
-            email = email)
+            email = email,
+            title = "User Signup")
 
 @app.route("/hello")
 def hello():
