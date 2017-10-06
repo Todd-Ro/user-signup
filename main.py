@@ -121,10 +121,10 @@ def validate_signup():
         return signup_form.format(username_error=username_error, 
             password_error=password_error,
             re_password_error=re_password_error,
-            email_error=email_error
+            email_error=email_error,
             username=username,
             password='',
-            re_password=''
+            re_password='',
             email = email)
 
 @app.route("/hello")
